@@ -1,8 +1,8 @@
 CREATE TABLE User_Profile ( 
 	user_id varchar(100),
-	first_name varchar(50) NOT NULL,
-	last_name varchar(50) NOT NULL,
-	gender varchar(20),
+	first_name varchar(100) NOT NULL,
+	last_name varchar(100) NOT NULL,
+	gender varchar(100),
 	birth_month int,
 	birth_day int,
 	birth_year int,
@@ -11,19 +11,19 @@ CREATE TABLE User_Profile (
 
 CREATE TABLE Location(
 	location_id varchar(100), 
-	city varchar(40),
-	state varchar(40),
-	country varchar (40),
+	city varchar(100),
+	state varchar(100),
+	country varchar (100),
 	PRIMARY KEY (location_id)
 );
 
 CREATE TABLE Album (
 	album_ID varchar(100),
-	album_name varchar(200),
-	album_link varchar(255),
+	album_name varchar(100),
+	album_link varchar(2000),
 	album_created_time timestamp,
 	album_modified_time timestamp, 
-	album_visibility char(20),
+	album_visibility char(100),
 	cover_photo_ID varchar(100),
 	owner_ID varchar(100),
 	PRIMARY KEY (album_ID),
@@ -32,8 +32,8 @@ CREATE TABLE Album (
 
 CREATE TABLE Photo (
 	photo_id varchar(100),
-	photo_caption varchar(255),
-	photo_link varchar(255),
+	photo_caption varchar(2000),
+	photo_link varchar(2000),
 	photo_creation_time timestamp,
 	photo_modified_time timestamp,
 	album_ID varchar(100) NOT NULL,
@@ -42,8 +42,8 @@ CREATE TABLE Photo (
 );
 
 CREATE TABLE Tags (
-	tag_photo_id varchar (255),
-	tag_subject_id varchar (100),
+	tag_photo_id varchar(100),
+	tag_subject_id varchar(100),
 	tag_created_time timestamp,
 	tag_x_coord number,
 	tag_y_coord number,
@@ -53,16 +53,16 @@ CREATE TABLE Tags (
 );
 
 CREATE TABLE Education (
-	ed_id varchar(20) PRIMARY KEY,
-	ed_institution varchar(255),
+	ed_id number PRIMARY KEY,
+	ed_institution varchar(100),
 	ed_grad_year number,
-	ed_degree varchar(255),
-	ed_concentration varchar(255)
+	ed_degree varchar(100),
+	ed_concentration varchar(100)
 );
 
 CREATE TABLE Message (
-	message_id varchar(20) PRIMARY KEY,
-	message_content varchar(255),
+	message_id varchar(100) PRIMARY KEY,
+	message_content varchar(2000),
 	sent_time timestamp
 );
 

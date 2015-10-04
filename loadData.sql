@@ -36,8 +36,8 @@ FROM keykholt.PUBLIC_USER_INFORMATION
 UNION 
 SELECT DISTINCT CURRENT_CITY, CURRENT_STATE, CURRENT_COUNTRY 
 FROM keykholt.PUBLIC_USER_INFORMATION 
-UNION EVENT_CITY, EVENT_STATE, EVENT_COUNTRY
-FROM keykholt.PUBLIC_USER_INFORMATION;
+UNION SELECT DISTINCT EVENT_CITY, EVENT_STATE, EVENT_COUNTRY
+FROM keykholt.PUBLIC_EVENT_INFORMATION;
 
 INSERT INTO Album (album_ID, album_name, album_link, album_created_time, 
 				   album_modified_time, album_visibility, cover_photo_ID, owner_ID)
@@ -55,10 +55,10 @@ FROM keykholt.PUBLIC_PHOTO_INFORMATION;
 INSERT INTO Tags (tag_photo_id, tag_subject_id, tag_created_time, tag_x_coord,
 				  tag_y_coord)
 SELECT DISTINCT PHOTO_ID, TAG_SUBJECT_ID, TAG_CREATED_TIME, TAG_X_COORDINATE, 
-				TAG_Y_COORD
+				TAG_Y_COORDINATE
 FROM keykholt.PUBLIC_TAG_INFORMATION; 
 
-INSERT INTO Education (ed_institution, ed_grad_year, ed_degree_, ed_concentration)
+INSERT INTO Education (ed_institution, ed_grad_year, ed_degree, ed_concentration)
 SELECT DISTINCT INSTITUTION_NAME, PROGRAM_YEAR, PROGRAM_DEGREE, PROGRAM_CONCENTRATION
 FROM keykholt.PUBLIC_USER_INFORMATION;
 
@@ -66,8 +66,8 @@ INSERT INTO Event (event_id, event_creator_id, event_name, event_tagline, event_
 				   event_start_time, event_end_time, event_location, event_city, event_state,
 				   event_country, event_host, event_subtype)
 SELECT DISTINCT EVENT_ID, EVENT_CREATOR_ID, EVENT_NAME, EVENT_TAGLINE, EVENT_DESCRIPTION,
-				EVENT_START_TIME, EVENT_END_TIME, EVENT_LOCATION, EVENT_CITY, EVENT_CITY,
-				EVENT_STATE, EVENT_COUNTRY, EVENT_HOST, EVENT_SUBTYPE
+				EVENT_START_TIME, EVENT_END_TIME, EVENT_LOCATION, EVENT_CITY, EVENT_STATE,
+				EVENT_COUNTRY, EVENT_HOST, EVENT_SUBTYPE
 FROM keykholt.PUBLIC_EVENT_INFORMATION;
 
 INSERT INTO Friendship (user_id, friend_id)
