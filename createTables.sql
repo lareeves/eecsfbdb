@@ -28,7 +28,7 @@ CREATE TABLE Album (
 	owner_ID varchar(100),
 	PRIMARY KEY (album_ID),
 	FOREIGN KEY (owner_ID) REFERENCES User_Profile ON DELETE CASCADE,
-	FOREIGN KEY cover_photo_ID REFERENCES Photo
+	FOREIGN KEY (cover_photo_ID) REFERENCES Photo
 );
 
 CREATE TABLE Photo (
@@ -50,7 +50,7 @@ CREATE TABLE Tags (
 	tag_y_coord number,
 	PRIMARY KEY(tag_photo_id, tag_subject_id),
 	FOREIGN KEY(tag_photo_id) REFERENCES Photo ON DELETE CASCADE,
-	FOREIGN KEY(tag_subject_id) REFERENCES User_Profile (user_id) ON DELETE CASCADE
+	FOREIGN KEY(tag_subject_id) REFERENCES User_Profile ON DELETE CASCADE
 );
 
 CREATE TABLE Education (

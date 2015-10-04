@@ -10,4 +10,5 @@ DROP TABLE Photo;
 DROP TABLE Album;
 DROP TABLE Education;
 DROP TABLE Friendship;
+DROP TABLE Location;
 DROP TABLE User_Profile;
