@@ -1,0 +1,13 @@
+DROP TABLE Chat;
+DROP TABLE Message;
+DROP TABLE Obtained_Education;
+DROP TABLE CurrentL;
+DROP TABLE HometownL;
+DROP TABLE Participant;
+DROP TABLE Event;
+DROP TABLE Tags;
+DROP TABLE Photo;
+DROP TABLE Album;
+DROP TABLE Education;
+DROP TABLE Friendship;
+DROP TABLE User_Profile;
