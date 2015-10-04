@@ -2,7 +2,7 @@ CREATE TABLE User_Profile (
 	user_id varchar(100),
 	first_name varchar(50) NOT NULL,
 	last_name varchar(50) NOT NULL,
-	gender varchar(6),
+	gender varchar(20),
 	birth_month int,
 	birth_day int,
 	birth_year int,
