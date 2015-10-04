@@ -34,7 +34,7 @@ CREATE TABLE Photo (
 	photo_id varchar(100),
 	photo_caption varchar(255),
 	photo_link varchar(255),
-	photo_caption_time timestamp,
+	photo_creation_time timestamp,
 	photo_modified_time timestamp,
 	album_ID varchar(100) NOT NULL,
 	PRIMARY KEY (photo_id),

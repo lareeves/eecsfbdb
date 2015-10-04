@@ -45,7 +45,7 @@ SELECT DISTINCT ALBUM_ID, ALBUM_NAME, ALBUM_LINK, ALBUM_CREATED_TIME,
 				ALBUM_MODIFIED_TIME, ALBUM_VISIBILITY, COVER_PHOTO_ID, OWNER_ID
 FROM keykholt.PUBLIC_PHOTO_INFORMATION;
 
-INSERT INTO Photo (photo_id, photo_caption, photo_caption_time, photo_modified_time,
+INSERT INTO Photo (photo_id, photo_caption, photo_creation_time, photo_modified_time,
 				   photo_link, album_ID)
 SELECT DISTINCT PHOTO_ID, PHOTO_CAPTION, PHOTO_CREATED_TIME, PHOTO_MODIFIED_TIME,
 				PHOTO_LINK, ALBUM_ID
