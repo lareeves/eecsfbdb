@@ -28,7 +28,6 @@ CREATE TABLE Album (
 	owner_ID varchar(100),
 	PRIMARY KEY (album_ID),
 	FOREIGN KEY (owner_ID) REFERENCES User_Profile ON DELETE CASCADE,
-	FOREIGN KEY (cover_photo_ID) REFERENCES Photo
 );
 
 CREATE TABLE Photo (
@@ -39,7 +38,7 @@ CREATE TABLE Photo (
 	photo_modified_time timestamp,
 	album_ID varchar(100) NOT NULL,
 	PRIMARY KEY (photo_id),
-	FOREIGN KEY REFERENCES Album ON DELETE CASCADE
+	FOREIGN KEY (album_ID) REFERENCES Album ON DELETE CASCADE
 );
 
 CREATE TABLE Tags (
@@ -82,9 +81,8 @@ CREATE TABLE Event (
 	event_host varchar(100),
 	event_type varchar(100),
 	event_subtype varchar(100),
-	
 	PRIMARY KEY(event_id),
-	FOREIGN KEY(event_creator_id) REFERENCES User_Profile(user_id)
+	FOREIGN KEY(event_creator_id) REFERENCES User_Profile
 );
 
 CREATE TABLE Friendship(
