@@ -27,8 +27,8 @@ CREATE TABLE Album (
 	cover_photo_ID varchar(100),
 	owner_ID varchar(100),
 	PRIMARY KEY (album_ID),
-	FOREIGN KEY (owner_ID) REFRENCES User_Profile ON DELETE CASCADE,
-	FOREIGN KEY cover_photo_ID REFRENCES Photo
+	FOREIGN KEY (owner_ID) REFERENCES User_Profile ON DELETE CASCADE,
+	FOREIGN KEY cover_photo_ID REFERENCES Photo
 );
 
 CREATE TABLE Photo (
@@ -39,7 +39,7 @@ CREATE TABLE Photo (
 	photo_modified_time timestamp,
 	album_ID varchar(100) NOT NULL,
 	PRIMARY KEY (photo_id),
-	FOREIGN KEY REFRENCES Album ON DELETE CASCADE
+	FOREIGN KEY REFERENCES Album ON DELETE CASCADE
 );
 
 CREATE TABLE Tags (
@@ -49,8 +49,8 @@ CREATE TABLE Tags (
 	tag_x_coord number,
 	tag_y_coord number,
 	PRIMARY KEY(tag_photo_id, tag_subject_id),
-	FOREIGN KEY(tag_photo_id) REFRENCES Photo ON DELETE CASCADE,
-	FOREIGN KEY(tag_subject_id) REFRENCES User_Profile (user_id) ON DELETE CASCADE
+	FOREIGN KEY(tag_photo_id) REFERENCES Photo ON DELETE CASCADE,
+	FOREIGN KEY(tag_subject_id) REFERENCES User_Profile (user_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Education (
@@ -84,15 +84,15 @@ CREATE TABLE Event (
 	event_subtype varchar(100),
 	
 	PRIMARY KEY(event_id),
-	FOREIGN KEY(event_creator_id) REFRENCES User_Profile(user_id)
+	FOREIGN KEY(event_creator_id) REFERENCES User_Profile(user_id)
 );
 
 CREATE TABLE Friendship(
 	user_id varchar(100),
 	friend_id varchar(100),
 	PRIMARY KEY (user_id, friend_id),
-	FOREIGN KEY (user_id) REFRENCES User_Profile ON DELETE CASCADE,
-	FOREIGN KEY (friend_id) REFRENCES User_Profile ON DELETE CASCADE
+	FOREIGN KEY (user_id) REFERENCES User_Profile ON DELETE CASCADE,
+	FOREIGN KEY (friend_id) REFERENCES User_Profile ON DELETE CASCADE
 );
 
 CREATE TABLE Participant (
@@ -100,30 +100,30 @@ CREATE TABLE Participant (
 	p_attendance varchar(50) CHECK (p_attendance IN ('ATTENDING', 'DECLINED', 'NOT SURE', 'NOT REPLIED')),
 	p_event varchar(100),
 	PRIMARY KEY (p_user, p_event),
-	FOREIGN KEY (p_user) REFRENCES User_Profile ON DELETE CASCADE,
-	FOREIGN KEY (p_event) REFRENCES Event ON DELETE CASCADE
+	FOREIGN KEY (p_user) REFERENCES User_Profile ON DELETE CASCADE,
+	FOREIGN KEY (p_event) REFERENCES Event ON DELETE CASCADE
 );
 
 CREATE TABLE HometownL (
 	user_id varchar(100),
 	location_id varchar(100),
 	PRIMARY KEY (user_id, location_id),
-	FOREIGN KEY (location_id) REFRENCES Location ON DELETE CASCADE
+	FOREIGN KEY (location_id) REFERENCES Location ON DELETE CASCADE
 );
 
 CREATE TABLE CurrentL (
 	user_id varchar(100),
 	location_id varchar(100),
 	PRIMARY KEY (user_id, location_id),
-	FOREIGN KEY (location_id) REFRENCES Location ON DELETE CASCADE
+	FOREIGN KEY (location_id) REFERENCES Location ON DELETE CASCADE
 );
 
 CREATE TABLE Obtained_Education (
 	user_id varchar(100),
 	ed_id varchar(20),
 	PRIMARY KEY (user_id, ed_id),
-	FOREIGN KEY (user_id) REFRENCES User_Profile,
-	FOREIGN KEY (ed_id) REFRENCES Education ON DELETE CASCADE
+	FOREIGN KEY (user_id) REFERENCES User_Profile,
+	FOREIGN KEY (ed_id) REFERENCES Education ON DELETE CASCADE
 );
 
 CREATE TABLE Chat (
@@ -131,7 +131,7 @@ CREATE TABLE Chat (
 	message_id varchar(100),
 	sender_ID varchar(100),
 	reciever_ID varchar(100),
-	FOREIGN KEY (sender_ID) REFRENCES User_Profile ON DELETE CASCADE,
-	FOREIGN KEY (reciever_ID) REFRENCES User_Profile,
-	FOREIGN KEY (message_id) REFRENCES Message 
+	FOREIGN KEY (sender_ID) REFERENCES User_Profile ON DELETE CASCADE,
+	FOREIGN KEY (reciever_ID) REFERENCES User_Profile,
+	FOREIGN KEY (message_id) REFERENCES Message 
 );
