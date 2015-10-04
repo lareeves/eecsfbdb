@@ -27,7 +27,7 @@ CREATE TABLE Album (
 	cover_photo_ID varchar(100),
 	owner_ID varchar(100),
 	PRIMARY KEY (album_ID),
-	FOREIGN KEY (owner_ID) REFERENCES User_Profile ON DELETE CASCADE,
+	FOREIGN KEY (owner_ID) REFERENCES User_Profile ON DELETE CASCADE
 );
 
 CREATE TABLE Photo (
