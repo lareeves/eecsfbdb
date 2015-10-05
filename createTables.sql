@@ -53,6 +53,7 @@ CREATE TABLE Tags (
 );
 
 CREATE TABLE Education (
+	user_id number,
 	ed_id number PRIMARY KEY,
 	ed_institution varchar(100),
 	ed_grad_year number,
@@ -118,7 +119,7 @@ CREATE TABLE CurrentL (
 
 CREATE TABLE Obtained_Education (
 	user_id varchar(100),
-	ed_id varchar(20),
+	ed_id number,
 	PRIMARY KEY (user_id, ed_id),
 	FOREIGN KEY (user_id) REFERENCES User_Profile,
 	FOREIGN KEY (ed_id) REFERENCES Education ON DELETE CASCADE
