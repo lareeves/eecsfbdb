@@ -25,7 +25,7 @@ END;
 RUN;
 
 INSERT INTO User_Profile (user_id, first_name, last_name, gender, birth_month,
-						  birth_day, birth_year)
+						  birth_day, birth_year, HometownL, CurrentL)
 SELECT DISTINCT USER_ID, FIRST_NAME, LAST_NAME, GENDER, MONTH_OF_BIRTH, 
 				DAY_OF_BIRTH, YEAR_OF_BIRTH 
 FROM keykholt.PUBLIC_USER_INFORMATION;

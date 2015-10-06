@@ -7,8 +7,8 @@ PROGRAM_DEGREE
 AS SELECT U_P.user_id, U_P.first_name, U_P.last_name, U_P.birth_year, U_P.birth_month, 
 	U_P.birth_day, U_P.gender, Hl.city, Hl.state, Hl.country, Cl.city, Cl.state,
 	Cl.country, Edu.ed_institution, Edu.ed_grad_year, Edu.ed_concentration, Edu.ed_degree
-FROM User_Profile U_P, HometownL Hl, CurrentL Cl, Education Ed 
-WHERE U_P.user_id = Hl.user_id AND U_P.user_id = Cl.user_id AND U_P.user_id = Ed.user_id;	
+FROM User_Profile U_P, HometownL Hl, CurrentL Cl, Education Edu
+WHERE U_P.user_id = Hl.user_id AND U_P.user_id = Cl.user_id AND U_P.user_id = Edu.user_id;	
 
 CREATE VIEW VIEW_ARE_FRIENDS (
 USER1ID, USER2ID
@@ -23,7 +23,7 @@ PHOTO_MODIFIED_TIME, PHOTO_LINK
 )
 AS SELECT p.album_ID, a.owner_ID, a.cover_photo_ID, a.album_name, a.album_created_time, 
 a.album_modified_time, a.album_link, a.album_visibility, p.photo_id, p.photo_caption, 
-p.photo_created_time, p.photo_modified_time, p.photo_link 
+p.photo_creation_time, p.photo_modified_time, p.photo_link 
 FROM Photo p, Album a
 WHERE p.album_ID = a.album_ID;
 
@@ -35,7 +35,7 @@ AS SELECT tag_photo_id, tag_subject_id, tag_created_time, tag_x_coord,
 tag_y_coord
 FROM Tags; 
 
-CREATE VIEW VIEW_EVENT_INORMATION (
+CREATE VIEW VIEW_EVENT_INFORMATION (
 EVENT_ID, EVENT_CREATOR_ID, EVENT_NAME, EVENT_TAGLINE, EVENT_DESCRIPTION,
 EVENT_HOST, EVENT_TYPE, EVENT_SUBTYPE, EVENT_LOCATION, EVENT_CITY,
 EVENT_STATE, EVENT_COUNTRY, EVENT_START_TIME, EVENT_END_TIME

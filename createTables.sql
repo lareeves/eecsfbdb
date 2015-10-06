@@ -1,3 +1,11 @@
+CREATE TABLE Location(
+	location_id int, 
+	city varchar(100),
+	state varchar(100),
+	country varchar (100),
+	PRIMARY KEY (location_id)
+);
+
 CREATE TABLE User_Profile ( 
 	user_id varchar(100),
 	first_name varchar(100) NOT NULL,
@@ -6,15 +14,11 @@ CREATE TABLE User_Profile (
 	birth_month int,
 	birth_day int,
 	birth_year int,
-	PRIMARY KEY (user_id)
-);
-
-CREATE TABLE Location(
-	location_id int, 
-	city varchar(100),
-	state varchar(100),
-	country varchar (100),
-	PRIMARY KEY (location_id)
+	hometownL int,
+	currentL int,
+	PRIMARY KEY (user_id),
+	FOREIGN KEY (hometownL) REFERENCES Location ON DELETE CASCADE,
+	FOREIGN KEY (currentL) REFERENCES Location ON DELETE CASCADE
 );
 
 CREATE TABLE Album (
@@ -61,7 +65,7 @@ CREATE TABLE Education (
 	ed_grad_year number,
 	ed_degree varchar(100),
 	ed_concentration varchar(100),
-	FOREIGN KEY (user_id) REFERENCES User_Profile
+	FOREIGN KEY (user_id) REFERENCES User_Profile ON DELETE CASCADE
 );
 
 CREATE TABLE Message (
@@ -106,19 +110,19 @@ CREATE TABLE Participant (
 	FOREIGN KEY (p_event) REFERENCES Event ON DELETE CASCADE
 );
 
-CREATE TABLE HometownL (
+/*CREATE TABLE HometownL (
 	user_id varchar(100),
-	location_id varchar(100),
+	location_id int,
 	PRIMARY KEY (user_id, location_id),
 	FOREIGN KEY (location_id) REFERENCES Location ON DELETE CASCADE
-);
+);*/
 
-CREATE TABLE CurrentL (
+/*CREATE TABLE CurrentL (
 	user_id varchar(100),
-	location_id varchar(100),
+
 	PRIMARY KEY (user_id, location_id),
 	FOREIGN KEY (location_id) REFERENCES Location ON DELETE CASCADE
-);
+);*/
 
 CREATE TABLE Chat (
 	chat_id varchar(100) PRIMARY KEY,
