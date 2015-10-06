@@ -1,6 +1,5 @@
 DROP TABLE Chat;
 DROP TABLE Message;
-DROP TABLE Obtained_Education;
 DROP TABLE CurrentL;
 DROP TABLE HometownL;
 DROP TABLE Participant;

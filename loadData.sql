@@ -58,8 +58,8 @@ SELECT DISTINCT PHOTO_ID, TAG_SUBJECT_ID, TAG_CREATED_TIME, TAG_X_COORDINATE,
 				TAG_Y_COORDINATE
 FROM keykholt.PUBLIC_TAG_INFORMATION; 
 
-INSERT INTO Education (ed_institution, ed_grad_year, ed_degree, ed_concentration)
-SELECT DISTINCT INSTITUTION_NAME, PROGRAM_YEAR, PROGRAM_DEGREE, PROGRAM_CONCENTRATION
+INSERT INTO Education (user_id, ed_institution, ed_grad_year, ed_degree, ed_concentration)
+SELECT DISTINCT USER_ID, INSTITUTION_NAME, PROGRAM_YEAR, PROGRAM_DEGREE, PROGRAM_CONCENTRATION
 FROM keykholt.PUBLIC_USER_INFORMATION;
 
 INSERT INTO Event (event_id, event_creator_id, event_name, event_tagline, event_description,
@@ -72,7 +72,10 @@ FROM keykholt.PUBLIC_EVENT_INFORMATION;
 
 INSERT INTO Friendship (user_id, friend_id)
 SELECT DISTINCT USER1_ID, USER2_ID 
-FROM keykholt.PUBLIC_ARE_FRIENDS;
+FROM keykholt.PUBLIC_ARE_FRIENDS
+WHERE USER1_ID < USER2_ID
+OR NOT EXISTS (SELECT * FROM keykholt.PUBLIC_ARE_FRIENDS k 
+WHERE (k.USER1_ID = USER2_ID) AND (k.USER2_ID = USER1_ID));
 
 INSERT INTO HometownL (user_id, location_id)
 SELECT DISTINCT p_u_i.USER_ID, l.location_id FROM keykholt.PUBLIC_USER_INFORMATION p_u_i, Location l

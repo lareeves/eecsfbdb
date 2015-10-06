@@ -7,7 +7,8 @@ PROGRAM_DEGREE
 AS SELECT U_P.user_id, U_P.first_name, U_P.last_name, U_P.birth_year, U_P.birth_month, 
 	U_P.birth_day, U_P.gender, Hl.city, Hl.state, Hl.country, Cl.city, Cl.state,
 	Cl.country, Edu.ed_institution, Edu.ed_grad_year, Edu.ed_concentration, Edu.ed_degree
-FROM User_Profile U_P;	
+FROM User_Profile U_P, HometownL Hl, CurrentL Cl, Education Ed 
+WHERE U_P.user_id = Hl.user_id AND U_P.user_id = Cl.user_id AND U_P.user_id = Ed.user_id;	
 
 CREATE VIEW VIEW_ARE_FRIENDS (
 USER1ID, USER2ID

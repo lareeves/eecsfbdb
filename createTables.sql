@@ -10,7 +10,7 @@ CREATE TABLE User_Profile (
 );
 
 CREATE TABLE Location(
-	location_id varchar(100), 
+	location_id int, 
 	city varchar(100),
 	state varchar(100),
 	country varchar (100),
@@ -23,7 +23,7 @@ CREATE TABLE Album (
 	album_link varchar(2000),
 	album_created_time timestamp,
 	album_modified_time timestamp, 
-	album_visibility char(100),
+	album_visibility varchar(100),
 	cover_photo_ID varchar(100),
 	owner_ID varchar(100),
 	PRIMARY KEY (album_ID),
@@ -41,9 +41,11 @@ CREATE TABLE Photo (
 	FOREIGN KEY (album_ID) REFERENCES Album ON DELETE CASCADE
 );
 
+ALTER TABLE Album ADD CONSTRAINT A FOREIGN KEY (cover_photo_ID) REFERENCES Photo (photo_id) ON DELETE SET NULL
+
 CREATE TABLE Tags (
-	tag_photo_id varchar(100),
-	tag_subject_id varchar(100),
+	tag_photo_id varchar(100) NOT NULL,
+	tag_subject_id varchar(100) NOT NULL,
 	tag_created_time timestamp,
 	tag_x_coord number,
 	tag_y_coord number,
@@ -53,12 +55,13 @@ CREATE TABLE Tags (
 );
 
 CREATE TABLE Education (
-	user_id number,
+	user_id varchar(100),
 	ed_id number PRIMARY KEY,
 	ed_institution varchar(100),
 	ed_grad_year number,
 	ed_degree varchar(100),
-	ed_concentration varchar(100)
+	ed_concentration varchar(100),
+	FOREIGN KEY (user_id) REFERENCES User_Profile
 );
 
 CREATE TABLE Message (
@@ -83,7 +86,7 @@ CREATE TABLE Event (
 	event_type varchar(100),
 	event_subtype varchar(100),
 	PRIMARY KEY(event_id),
-	FOREIGN KEY(event_creator_id) REFERENCES User_Profile
+	FOREIGN KEY(event_creator_id) REFERENCES User_Profile ON DELETE CASCADE
 );
 
 CREATE TABLE Friendship(
@@ -115,14 +118,6 @@ CREATE TABLE CurrentL (
 	location_id varchar(100),
 	PRIMARY KEY (user_id, location_id),
 	FOREIGN KEY (location_id) REFERENCES Location ON DELETE CASCADE
-);
-
-CREATE TABLE Obtained_Education (
-	user_id varchar(100),
-	ed_id number,
-	PRIMARY KEY (user_id, ed_id),
-	FOREIGN KEY (user_id) REFERENCES User_Profile,
-	FOREIGN KEY (ed_id) REFERENCES Education ON DELETE CASCADE
 );
 
 CREATE TABLE Chat (
